@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\JWTAuth as JWTAuthJWTAuth;
 
 class UserController extends Controller
 {
@@ -30,8 +31,12 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
+            'alamat' => 'required|string',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:8|confirmed',
+            'avatar' => 'required|string|max:255',
+            'nomer' => 'required|integer|min:11',
+            'role' => 'required|integer',
         ]);
 
         if($validator->fails()){
@@ -40,13 +45,17 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => $request->get('name'),
+            'alamat' => $request->get('alamat'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
+            'avatar' => $request->get('avatar'),
+            'nomer' => $request->get('nomer'),
+            'role' => $request->get('role'),
         ]);
 
         $token = JWTAuth::fromUser($user);
 
-        return response()->json(compact('user','token'),201);
+        return response()->json(compact('user','token'), 201);
     }
 
     public function getAuthenticatedUser()
@@ -72,5 +81,13 @@ class UserController extends Controller
         }
 
         return response()->json(compact('user'));
+    }
+
+    public function logout() 
+    {
+        if (JWTAuth::invalidate(JWTAuth::getToken())) {
+            return $this->sendResponse('success', 'Behasil Logout', null, 200);
+        }
+        return $this->sendResponse('error', 'Gagal Logout', null, 400);
     }
 }
