@@ -1,6 +1,5 @@
 <?php
 
-use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,17 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['middleware' =>['jwt.verify']], function() {
-    // User
-    Route::post('register', 'UserController@register');
-    Route::post('login', 'UserController@login');
-    Route::get('/user/{id}', 'UserDetailController@getUserDetails');
-    Route::post('/user/detail', 'UserDetailController@setUserDetails');
-    Route::post('/user/update/{id}', 'UserDetailController@updateuser');
-    Route::post('/user/delete', 'UserController@destroy');
-    Route::patch('user/password/{id}', 'UserController@changePassword');
-    Route::get('/logout', 'UserController@logout');
-    
-});
+
+Route::post('register', 'UserController@register');
+Route::post('login', 'UserController@login');
 
 Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
