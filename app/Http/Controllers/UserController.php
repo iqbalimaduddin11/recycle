@@ -34,8 +34,8 @@ class UserController extends Controller
             'alamat' => 'required|string',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'avatar' => 'required|string|max:255',
-            'nomer' => 'required|integer|min:11',
+            'avatar' => 'string',
+            'nomer' => 'integer',
             'role' => 'required|integer',
         ]);
 
