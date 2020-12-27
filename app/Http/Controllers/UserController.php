@@ -16,16 +16,7 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
         
-        $user = User::where([
-            'name' => $request->get('name'),
-            'alamat' => $request->get('alamat'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
-            'avatar' => $request->get('avatar'),
-            'nomer' => $request->get('nomer'),
-            'role' => 1,
-        ]);
-
+        $user=User::where('email', $request->email)->first();
 
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
