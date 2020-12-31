@@ -70,7 +70,7 @@ class UserDetailController extends Controller
 
             $userDetail->save();
 
-            $user = User::where('id',$request->$user_id)->with('userdetail')->first();
+            $user = User::where('id',$request->user_id)->with('userdetail')->first();
 
             return $this->sendResponse('succsess', 'Data Berhasil ditambah', compact('user'), 201);
 
