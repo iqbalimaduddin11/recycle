@@ -34,12 +34,6 @@ Route::delete('/pengurus2/{id}', 'HomeController@deletePengurus2');
 
 // CRUD Bendahara
 
-Route::get('/bendahara', 'HomeController@getBendahara');
-Route::get('/bendahara/create', 'HomeController@showBendahara');
-Route::get('/bendahara/{slug}', 'HomeController@showBendahara');
-Route::post('/bendahara', 'HomeController@storeBendahara');
-Route::get('/bendahara/{id}/edit', 'HomeController@editBendahara');
-Route::put('/bendahara/{id}', 'HomeController@updateBendahara');
-Route::delete('/bendahara/{id}', 'HomeController@deleteBendahara');
+
 
 // CRUD Jenis Sampah & Harga
