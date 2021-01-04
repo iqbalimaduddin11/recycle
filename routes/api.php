@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // User
+
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login');
 Route::get('/user/{id}', 'UserDetailController@getUserDetails');
@@ -27,5 +28,12 @@ Route::post('/user/update/{id}', 'UserDetailController@updateuser');
 Route::post('/user/delete', 'UserController@destroy');
 Route::patch('user/password/{id}', 'UserController@changePassword');
 Route::get('/logout', 'UserController@logout');
+
+
+//penjemputan sampah
+
+Route::get('/jemput_sampah', '');
+Route::get('/jemput_sampah', 'PenjemputanController@jemputSampah');
+Route::get('/jemput_sampah', );
 
 Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
