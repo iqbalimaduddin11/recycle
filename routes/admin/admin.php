@@ -25,7 +25,7 @@ Route::delete('/pengurus1/{id}', 'HomeController@deletePengurus1');
 // CRUD Pengurus 2
 
 Route::get('/pengurus2', 'HomeController@getPengurus2');
-Route::get('/pengurus2/create', 'HomeController@createPengurus2');
+Route::get('/pengurus2/create', 'HomeController@showPengurus2');
 Route::get('/pengurus2/{slug}', 'HomeController@showPengurus2');
 Route::post('/pengurus2', 'HomeController@storePengurus2');
 Route::get('/pengurus2/{id}/edit', 'HomeController@editPengurus2');
@@ -35,7 +35,7 @@ Route::delete('/pengurus2/{id}', 'HomeController@deletePengurus2');
 // CRUD Bendahara
 
 Route::get('/bendahara', 'HomeController@getBendahara');
-Route::get('/bendahara/create', 'HomeController@createBendahara');
+Route::get('/bendahara/create', 'HomeController@showBendahara');
 Route::get('/bendahara/{slug}', 'HomeController@showBendahara');
 Route::post('/bendahara', 'HomeController@storeBendahara');
 Route::get('/bendahara/{id}/edit', 'HomeController@editBendahara');
