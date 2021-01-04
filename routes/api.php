@@ -32,8 +32,8 @@ Route::get('/logout', 'UserController@logout');
 
 //penjemputan sampah
 
-Route::get('/jemput_sampah', '');
-Route::get('/jemput_sampah', 'PenjemputanController@jemputSampah');
-Route::get('/jemput_sampah', );
+// Route::get('/jemput_sampah', '');
+// Route::get('/jemput_sampah', 'PenjemputanController@jemputSampah');
+// Route::get('/jemput_sampah', );
 
 Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
