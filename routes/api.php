@@ -24,11 +24,11 @@ Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login');
 
 Route::get('/getAuthenticatedUser', 'UserController@getAuthenticatedUser');
-Route::get('/user/{id}', 'UserDetailController@getUserDetails');
-Route::post('/user/detail', 'UserDetailController@setUserDetails');
-Route::patch('/user/update/{id}', 'UserDetailController@updateUser');
+Route::get('/user/{id}', 'UserDetailController@getUser');
+Route::post('/user/detail', 'UserDetailController@setUser');
+Route::post('/user/update/{id}', 'UserDetailController@updateUser');
+Route::post('/user/delete', 'UserDetailController@destroyUser');
 Route::patch('user/password/{id}', 'UserController@changePassword');
-Route::post('/user/delete', 'UserController@destroy');
 Route::get('/logout', 'UserController@logout');
 
 
