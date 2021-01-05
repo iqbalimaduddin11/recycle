@@ -26,7 +26,7 @@ Route::post('login', 'UserController@login');
 Route::get('/getAuthenticatedUser', 'UserController@getAuthenticatedUser');
 Route::get('/user/{id}', 'UserDetailController@getUserDetails');
 Route::post('/user/detail', 'UserDetailController@setUserDetails');
-Route::post('/user/update/{id}', 'UserDetailController@updateuser');
+Route::patch('/user/update/{id}', 'UserDetailController@updateUser');
 Route::patch('user/password/{id}', 'UserController@changePassword');
 Route::post('/user/delete', 'UserController@destroy');
 Route::get('/logout', 'UserController@logout');
