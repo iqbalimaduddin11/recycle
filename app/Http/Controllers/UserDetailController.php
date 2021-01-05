@@ -77,31 +77,34 @@ class UserDetailController extends Controller
 
         
         
-        $validator = Validator::make($request->all(), [
-            'name' => 'string',
-            'nomer' => 'string',
-            'alamat' => 'string',
-            'avatar' => 'string',
-            'email' => 'email|unique:users,email,',
-            'password' => 'string',
+        // $validator = Validator::make($request->all(), [
+        //     'name' => 'string',
+        //     'nomer' => 'string',
+        //     'alamat' => 'string',
+        //     'avatar' => 'string',
+        //     'email' => 'email|unique:users,email,',
+        //     'password' => 'string',
+        // ]);
+            
+        //     if ($validator->fails()) {
+        //         return response()->json($validator->errors()->toJson(), 400);
+        //     }
+        $request->validate([
+            'name' => 'required|string',
+            'nomer' => 'required|string',
+            'alamat' => 'required|string',
+            'avatar' => 'required|string',
+            'email' => 'required|email|unique:users,email,',
+            'password' => 'required|string',
         ]);
             
-            if ($validator->fails()) {
-                return response()->json($validator->errors()->toJson(), 400);
-            }
-        $user = User::update([
-            'name' => $request->get('name'),
-            'alamat' => $request->get('alamat'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
-            'avatar' => $request->get('avatar'),
-            'nomer' => $request->get('nomer'),
-        ]);
-            $user = User::findOrFail($id);
+            $user = User::find($id);
             
-            $data = $validator->validated();
+            $dataRequest = $request->all();
+            
+            $user->update($dataRequest);
 
-            $result = array_filter($data);
+
             
         try {
             $user->update($result);
