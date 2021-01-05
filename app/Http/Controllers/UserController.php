@@ -85,7 +85,10 @@ class UserController extends Controller
         return response()->json(compact('user'));
     }
 
-    public function changePassword
+    // public function changePassword()
+    // {
+
+    // }
 
     public function logout() 
     {
