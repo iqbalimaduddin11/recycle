@@ -21,26 +21,23 @@ class UserDetailController extends Controller
         return $this->sendResponse('success', 'Data Berhasil ditampilkan', $user ,201);
     }
 
-    public function setUserDetails(Request $request, UserDetail $userDetail)
+    public function setUserDetails(Request $request, $id)
     {
-        if (!User::find($request->user_id)) {
-            return $this->sendResponse('error', 'Data Tidak Ada', null, 404);
-        }
-
+        
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'nomer' => 'required',
             'alamat' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response($validator->errors());
-        }
-
+            ]);
+            
+            if ($validator->fails()) {
+                return response($validator->errors());
+            }
+            
+            $userDetail = User::findOrFail($id);
         
         try {
-            
-            $userDetail->user_id = $request->user_id;
+            $userDetail->name = $request->name;
             $userDetail->nomer = $request->nomer;
             $userDetail->alamat = $request->alamat;
             if ($request->hasFile('avatar')) {
@@ -76,27 +73,29 @@ class UserDetailController extends Controller
         }
     }
 
-    public function updateUser($id) {
+    public function updateUser(Request $request, $id) {
 
-        $user = User::find($id);
-
-        if (!$user) {
-            return $this->sendResponse('error', 'Data Tidak ditemukan', null ,404);
-        }
-
+        
+        
         $validator = Validator::make($request->all(), [
             'name' => 'string',
-            'email' => 'email|unique:users,email,'.$user->id,
+            'nomer' => 'string',
+            'alamat' => 'string',
+            'avatar' => 'string',
+            'email' => 'email|unique:users,email,',
+            'password' => 'string',
         ]);
+            
+            if ($validator->fails()) {
+                return response()->json($validator->errors()->toJson(), 400);
+            }
+            
+            $user = User::findOrFail($id);
+            
+            $data = $validator->validated();
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors()->toJson(), 400);
-        }
-
-        $data = $request->all();
-
-        $result = array_filter($data);
-
+            $result = array_filter($data);
+            
         try {
             $user->update($result);
 
