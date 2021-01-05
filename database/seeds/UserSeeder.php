@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'pengurus1',
                 'email' => 'pengurus1@gmail.com',
-                'password' => Hash::make('pengurus1'),
+                'password' => bcrypt('pengurus1'),
                 'alamat' => 'kantor',
                 'nomer' => '081211001102',
                 'avatar' => 'https://via.placeholder.com/150',
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'pengurus2',
                 'email' => 'pengurus2@gmail.com',
-                'password' => Hash::make('pengurus2'),
+                'password' => bcrypt('pengurus2'),
                 'alamat' => 'kantor',
                 'nomer' => '081211001103',
                 'avatar' => 'https://via.placeholder.com/150',
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'bendahara',
                 'email' => 'bendahara@gmail.com',
-                'password' => Hash::make('bendahara'),
+                'password' => bcrypt('bendahara'),
                 'alamat' => 'kantor',
                 'nomer' => '081211001104',
                 'avatar' => 'https://via.placeholder.com/150',
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
-                'password' => Hash::make('admin123'),
+                'password' => bcrypt('admin123'),
                 'alamat' => 'kantor',
                 'nomer' => '081211001105',
                 'avatar' => 'https://via.placeholder.com/150',
