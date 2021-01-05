@@ -89,7 +89,14 @@ class UserDetailController extends Controller
             if ($validator->fails()) {
                 return response()->json($validator->errors()->toJson(), 400);
             }
-            
+        $user = User::update([
+            'name' => $request->get('name'),
+            'alamat' => $request->get('alamat'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password')),
+            'avatar' => $request->get('avatar'),
+            'nomer' => $request->get('nomer'),
+        ]);
             $user = User::findOrFail($id);
             
             $data = $validator->validated();
