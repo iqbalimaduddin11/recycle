@@ -16,13 +16,9 @@ class UserDetailController extends Controller
      */
     public function getUserDetails($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         
-        if (!$user) {
-            return $this->sendResponse('error', 'data tidak ditemukan', null, 404);
-        }
-        
-        $user = User::where('id', $id)->with('userdetail');
+        return $this->sendResponse('success', 'Data Berhasil ditampilkan', $user ,201);
     }
 
     public function setUserDetails(Request $request, UserDetail $userDetail)
@@ -34,7 +30,7 @@ class UserDetailController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'nomer' => 'required',
-            'alamat' => 'required'
+            'alamat' => 'required',
         ]);
 
         if ($validator->fails()) {

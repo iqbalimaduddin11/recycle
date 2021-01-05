@@ -22,11 +22,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login');
+
+Route::get('/getAuthenticatedUser', 'UserController@getAuthenticatedUser');
 Route::get('/user/{id}', 'UserDetailController@getUserDetails');
 Route::post('/user/detail', 'UserDetailController@setUserDetails');
 Route::post('/user/update/{id}', 'UserDetailController@updateuser');
-Route::post('/user/delete', 'UserController@destroy');
 Route::patch('user/password/{id}', 'UserController@changePassword');
+Route::post('/user/delete', 'UserController@destroy');
 Route::get('/logout', 'UserController@logout');
 
 
