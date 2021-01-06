@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\UserDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserDetailController extends Controller
@@ -77,12 +78,12 @@ class UserDetailController extends Controller
 
         
         $request->validate([
-            'name' => 'required|string',
-            'nomer' => 'required|string',
-            'alamat' => 'required|string',
-            'avatar' => 'required|string',
-            'email' => 'required|email|unique:users,email,',
-            'password' => 'required|string',
+            // 'name' => 'required|string',
+            // 'nomer' => 'required|string',
+            // 'alamat' => 'required|string',
+            // 'avatar' => 'required|string',
+            // 'email' => 'required|email|unique:users,email,',
+            // 'password' => 'required|string',
         ]);
             
             $user = User::find($id);
@@ -115,7 +116,6 @@ class UserDetailController extends Controller
         try {
             
             $user->update($dataResult);
-            // dd($user);
 
             return $this->sendResponse('success', 'Data Berhasil diupdate', compact('user'), 201);
         } catch (\Exception $th) {
@@ -123,7 +123,6 @@ class UserDetailController extends Controller
         }
     }
 
-    public
 
     public function destroyUser(Request $request) 
     {
