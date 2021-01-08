@@ -14,3 +14,4 @@ Auth::routes();
 
 
 Route::get('/admin', 'HomeController@setIndex');
+Route::post('/password/email', 'ForgotPasswordController@sendResetLinkEmail');

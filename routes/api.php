@@ -22,20 +22,29 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login');
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+
 
 Route::get('/getAuthenticatedUser', 'UserController@getAuthenticatedUser');
 Route::get('/user/{id}', 'UserDetailController@getUser');
 Route::post('/user/detail', 'UserDetailController@setUser');
 Route::post('/user/update/{id}', 'UserDetailController@updateUser');
 Route::post('/user/delete', 'UserDetailController@destroyUser');
-Route::patch('user/password/{id}', 'UserController@changePassword');
 Route::get('/logout', 'UserController@logout');
 
 
 //penjemputan sampah
 
-// Route::get('/jemput_sampah', '');
-// Route::get('/jemput_sampah', 'PenjemputanController@jemputSampah');
-// Route::get('/jemput_sampah', );
+Route::post('');
 
 Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
+
+
+
+
+
+
+
+
+
+// Route::patch('user/password/{id}', 'UserController@changePassword');

@@ -107,4 +107,12 @@ return [
         ],
     ],
 
+    'stream' => [
+        'ssl' => [
+            'allow self signed' => true,
+            'verify peer' => false,
+            'verify peer name' => true,
+        ],
+    ],
+
 ];
