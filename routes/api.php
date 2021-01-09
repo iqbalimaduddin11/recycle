@@ -35,7 +35,7 @@ Route::get('/logout', 'UserController@logout');
 
 //penjemputan sampah
 
-Route::post('');
+Route::post('/penjemputan/{id}', 'PenjemputanController@createPenjemputan');
 
 Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
 

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Penjemputan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class PenjemputanController extends Controller
 {
-    public function createPenjemputan(Request $request, $id)
+    public function createPenjemputan(Request $request, Penjemputan $penjemputan, $id)
     {
         
         $validator = Validator::make($request->all(), [
@@ -21,20 +21,19 @@ class PenjemputanController extends Controller
             if ($validator->fails()) {
                 return response($validator->errors());
             }
-            
-            $Penjemputan = User::findOrFail($id);
         
-        try {
-            $Penjemputan->name = $request->name;
-            $Penjemputan->nomer = $request->nomer;
-            $Penjemputan->keterangan = $request->keterangan;
-            $Penjemputan->alamat = $request->alamat;
+            try {
+            $penjemputan->user_id = $id;
+            $penjemputan->name = $request->name;
+            $penjemputan->nomer = $request->nomer;
+            $penjemputan->keterangan = $request->keterangan;
+            $penjemputan->alamat = $request->alamat;
 
-            $Penjemputan->save();
+            $penjemputan->save();
 
-            // $user = User::where('id',$request->user_id)->with('userdetail')->first();
+            $penjemputan = Penjemputan::where('user_id',$id)->with('user')->first();
 
-            return $this->sendResponse('succsess', 'Data Berhasil ditambah', compact('user'), 201);
+            return $this->sendResponse('succsess', 'Data Berhasil ditambah', compact('penjemputan'), 201);
 
         } catch (\Exception $th) {
             

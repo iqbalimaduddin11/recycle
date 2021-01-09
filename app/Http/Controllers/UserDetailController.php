@@ -22,57 +22,57 @@ class UserDetailController extends Controller
         return $this->sendResponse('success', 'Data Berhasil ditampilkan', $user ,201);
     }
 
-    // public function setUser(Request $request, $id)
-    // {
+    public function setUser(Request $request, $id)
+    {
         
-    //     $validator = Validator::make($request->all(), [
-    //         'user_id' => 'required',
-    //         'nomer' => 'required',
-    //         'alamat' => 'required',
-    //         ]);
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'nomer' => 'required',
+            'alamat' => 'required',
+            ]);
             
-    //         if ($validator->fails()) {
-    //             return response($validator->errors());
-    //         }
+            if ($validator->fails()) {
+                return response($validator->errors());
+            }
             
-    //         $userDetail = User::findOrFail($id);
+            $userDetail = User::findOrFail($id);
         
-    //     try {
-    //         $userDetail->name = $request->name;
-    //         $userDetail->nomer = $request->nomer;
-    //         $userDetail->alamat = $request->alamat;
-    //         if ($request->hasFile('avatar')) {
-    //             $image = $request->file('avatar');
-    //             $file = base64_encode(file_get_contents($image));
+        try {
+            $userDetail->name = $request->name;
+            $userDetail->nomer = $request->nomer;
+            $userDetail->alamat = $request->alamat;
+            if ($request->hasFile('avatar')) {
+                $image = $request->file('avatar');
+                $file = base64_encode(file_get_contents($image));
 
-    //             $client = new \GuzzleHttp\Client();
-    //             $response = $client->request('POST', 'https://freeimage.host/api/1/upload', [
-    //                 'form_params' => [
-    //                     'key' => '6d207e02198a847aa98d0a2a901485a5',
-    //                     'action' => 'upload',
-    //                     'source' => $file,
-    //                     'format' => 'json'
-    //                 ]
-    //             ]);
+                $client = new \GuzzleHttp\Client();
+                $response = $client->request('POST', 'https://freeimage.host/api/1/upload', [
+                    'form_params' => [
+                        'key' => '6d207e02198a847aa98d0a2a901485a5',
+                        'action' => 'upload',
+                        'source' => $file,
+                        'format' => 'json'
+                    ]
+                ]);
 
-    //             $data = $response->getBody()->getContents();
-    //             $data = json_decode($data);
-    //             $image = $data->image->url;
+                $data = $response->getBody()->getContents();
+                $data = json_decode($data);
+                $image = $data->image->url;
 
-    //             $userDetail->avatar = $image;
-    //         }
+                $userDetail->avatar = $image;
+            }
 
-    //         $userDetail->save();
+            $userDetail->save();
 
-    //         $user = User::where('id',$request->user_id)->with('userdetail')->first();
+            $user = User::where('id',$request->user_id)->with('userdetail')->first();
 
-    //         return $this->sendResponse('succsess', 'Data Berhasil ditambah', compact('user'), 201);
+            return $this->sendResponse('succsess', 'Data Berhasil ditambah', compact('user'), 201);
 
-    //     } catch (\Exception $th) {
+        } catch (\Exception $th) {
             
-    //         return $this->sendResponse('error', 'Data Gagal ditambah', $th->getMessage(), 500);
-    //     }
-    // }
+            return $this->sendResponse('error', 'Data Gagal ditambah', $th->getMessage(), 500);
+        }
+    }
 
     public function updateUser(Request $request, $id) {
 

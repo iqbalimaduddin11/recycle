@@ -49,6 +49,6 @@ class User extends Authenticatable implements JWTSubject
 
     public function Penjemputan()
     {
-        return $this->hasOne('App\User');
+        return $this->hasMany('App\User');
     }
 }
