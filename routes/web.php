@@ -10,8 +10,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/admin', 'HomeController@setIndex');
-Route::post('/password/email', 'ForgotPasswordController@sendResetLinkEmail');
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
