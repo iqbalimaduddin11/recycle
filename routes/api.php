@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login');
-Route::get('/password/email', 'UserController@forgotPassword');
+Route::get('/forget', 'UserController@forgotPassword');
 
 
 Route::get('/getAuthenticatedUser', 'UserController@getAuthenticatedUser');
