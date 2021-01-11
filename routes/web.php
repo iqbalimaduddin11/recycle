@@ -14,4 +14,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/admin', 'HomeController@setIndex');
-Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+// Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');

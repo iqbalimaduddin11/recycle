@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -90,5 +91,12 @@ class UserController extends Controller
             return $this->sendResponse('success', 'Behasil Logout', null, 200);
         }
         return $this->sendResponse('error', 'Gagal Logout', null, 400);
+    }
+
+    public function forgotPassword()
+    {
+        $password = "http://mini-project-e.herokuapp.com/password/reset";
+
+        return Redirect::to($password);
     }
 }
