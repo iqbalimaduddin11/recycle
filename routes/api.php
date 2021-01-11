@@ -18,24 +18,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// User
-
+// Login & Register Nasabah, Pengurus 1/2, Bendahara
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login');
 Route::get('/forget', 'UserController@forgotPassword');
 
+Route::group(['middleware' => ['jwt.verify']], function () {
+    // User
+    Route::get('/getAuthenticatedUser', 'UserController@getAuthenticatedUser');
+    Route::get('/user/{id}', 'UserDetailController@getUser');
+    Route::post('/user/detail', 'UserDetailController@setUser');
+    Route::post('/user/update/{id}', 'UserDetailController@updateUser');
+    Route::post('/user/delete', 'UserDetailController@destroyUser');
+    Route::get('/logout', 'UserController@logout');
+    
+    //penjemputan sampah
+    Route::post('/penjemputan/{id}', 'PenjemputanController@createPenjemputan');
+});
 
-Route::get('/getAuthenticatedUser', 'UserController@getAuthenticatedUser');
-Route::get('/user/{id}', 'UserDetailController@getUser');
-Route::post('/user/detail', 'UserDetailController@setUser');
-Route::post('/user/update/{id}', 'UserDetailController@updateUser');
-Route::post('/user/delete', 'UserDetailController@destroyUser');
-Route::get('/logout', 'UserController@logout');
-
-
-//penjemputan sampah
-
-Route::post('/penjemputan/{id}', 'PenjemputanController@createPenjemputan');
 
 Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
 
