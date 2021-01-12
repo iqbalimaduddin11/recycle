@@ -20,6 +20,7 @@ class CreatePenjemputansTable extends Migration
             $table->string('nomer');
             $table->string('keterangan');
             $table->string('alamat');
+            $table->enum('status', ['menunggu konfirmasi', 'menunggu penjemputan', 'selesai']);
             $table->timestamps();
         });
     }

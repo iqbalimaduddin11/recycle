@@ -40,5 +40,32 @@ class PenjemputanController extends Controller
             return $this->sendResponse('error', 'Data Gagal ditambah', $th->getMessage(), 500);
         }
     }
+
+    public function addPenjemputan(Request $request, Penjemputan $penjemputan)
+    {
+        $validator = Validator::make($request->all(), [
+            'status' => '0,1,2',
+        ]);
+
+        if ($validator->fails()) {
+            return response($validator->errors());
+        }
+
+        $penjemputan->status = $request->status;
+
+        
+        try {
+            $penjemputan->save();
+
+            return $this->sendResponse('success', 'status penjemputan telah dikonfirmasi', $penjemputan, 200);
+        } catch (\Exception $th) {
+            return $this->sendResponse('error', 'status penjemputan gagal dikonfirmasi', $th->getMessage(), 500);
+        }
+    }
+
+    // public function approvePenjemputan()
+    // {
+
+    // }
     
 }

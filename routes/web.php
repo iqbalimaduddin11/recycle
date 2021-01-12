@@ -12,6 +12,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Nasabah
+Route::get('/nasabah', 'HomeController@index');
+Route::post('/nasabah', 'HomeController@createNasabah');
+Route::post('/nasabah', 'HomeController@storeNasabah');
+Route::post('/nasabah', 'HomeController@createNasabah');
+Route::post('/nasabah', 'HomeController@createNasabah');
+
 
 Route::get('/admin', 'HomeController@setIndex');
-// Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
