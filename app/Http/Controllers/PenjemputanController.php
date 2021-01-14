@@ -90,7 +90,12 @@ class PenjemputanController extends Controller
 
         $penjemputan = Penjemputan::find($id);
 
-        $penjemputan->status = $penjemputan->status;
+        if (!$penjemputan) {
+            # code...
+            return $this->sendResponse('error', 'Data penjemputan tidak ada', null, 404);
+        }
+
+        $penjemputan->status = $request->status;
 
         try {
             $penjemputan->save();
