@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Validator;
 
 class PenjemputanController extends Controller
 {
-    public function getPenjemputan()
+    public function getPenjemputan($id)
     {
-        $penjemputan = Penjemputan::where('user_id', Auth::user()->id)->with('user')->get();
+        $penjemputan = Penjemputan::where('id', $id)->with('user')->get();
 
         return $this->sendResponse('success', 'Data Berhasil diambil', $penjemputan, 200);
 
@@ -36,7 +36,7 @@ class PenjemputanController extends Controller
             $penjemputan->nomer = $request->nomer;
             $penjemputan->keterangan = $request->keterangan;
             $penjemputan->alamat = $request->alamat;
-            $penjemputan->status = $request->status;
+            // $penjemputan->status = $request->status;
 
             $penjemputan->save();
 
