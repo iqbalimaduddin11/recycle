@@ -34,7 +34,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     
     //penjemputan sampah
     Route::get('/penjemputan/{id}', 'PenjemputanController@getPenjemputan');
-    Route::post('/penjemputan/create/{id}', 'PenjemputanController@createPenjemputan');
+    Route::post('/penjemputan//create', 'PenjemputanController@createPenjemputan');
     Route::post('/penjemputan/update/{id}', 'PenjemputanController@setStatusPenjemputan');
 });
 
