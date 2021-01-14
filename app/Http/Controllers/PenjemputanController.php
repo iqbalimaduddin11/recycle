@@ -24,7 +24,6 @@ class PenjemputanController extends Controller
             'nomer' => 'string',
             'keterangan' => 'string',
             'alamat' => 'string',
-            'status' => 'string',
             ]);
             
             if ($validator->fails()) {
