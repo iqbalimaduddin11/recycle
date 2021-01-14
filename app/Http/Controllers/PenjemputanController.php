@@ -24,6 +24,7 @@ class PenjemputanController extends Controller
             'nomer' => 'string',
             'keterangan' => 'string',
             'alamat' => 'string',
+            'status' => 'string',
             ]);
             
             if ($validator->fails()) {
@@ -36,6 +37,7 @@ class PenjemputanController extends Controller
             $penjemputan->nomer = $request->nomer;
             $penjemputan->keterangan = $request->keterangan;
             $penjemputan->alamat = $request->alamat;
+            $penjemputan->status = $request->status;
 
             $penjemputan->save();
 

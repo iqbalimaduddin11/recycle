@@ -20,7 +20,7 @@ class CreatePenjemputansTable extends Migration
             $table->string('nomer');
             $table->string('keterangan');
             $table->string('alamat');
-            $table->integer('status')->default(0);
+            $table->integer('status')->nullable()->default(0);
             $table->timestamps();
         });
     }
