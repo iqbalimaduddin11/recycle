@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Penjemputan extends Model
 {
-    protected $fillable = ['name', 'nomer', 'keterangan', 'alamat'];
+    protected $fillable = ['name', 'nomer', 'keterangan', 'alamat', 'status'];
 
     public function user()
     {
