@@ -167,11 +167,6 @@
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Nasabah</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
                             <a href="chart.html">
@@ -183,7 +178,7 @@
                         </li>
                         <li>
                             <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
+                                <i class="far fa-check-square"></i>Jenis Sampah dan Harga</a>
                         </li>
                         <li>
                             <a href="calendar.html">
