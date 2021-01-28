@@ -12,8 +12,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => ['jwt.verify']], function () {
-//Nasabah
+// Route::group(['middleware' => ['jwt.verify']], function () {
+    //Nasabah
     Route::get('/nasabah', 'HomeController@getNasabah');
     Route::get('/nasabah/create', 'HomeController@createNasabah');
     Route::get('/nasabah/{slug}', 'HomeController@showNasabah');
@@ -48,6 +48,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('/bendahara/{id}/edit', 'HomeController@editBendahara');
     Route::put('/bendahara/{id}', 'HomeController@updateBendahara');
     Route::delete('/bendahara/{id}', 'HomeController@deleteBendahara');
-});
+// });
 
 Route::get('/admin', 'HomeController@setIndex');

@@ -37,7 +37,7 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
+        {{-- <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
             <div class="header-mobile__bar">
                 <div class="container-fluid">
@@ -152,7 +152,7 @@
                 </div>
             </nav>
         </header>
-        <!-- END HEADER MOBILE-->
+        <!-- END HEADER MOBILE--> --}}
 
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
@@ -165,8 +165,9 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Nasabah</a>
+                            <a class="js-arrow" href="/nasabah">
+                                <i class="fas fa-tachometer-alt"></i>Nasabah
+                            </a>
                         </li>
                         <li>
                             <a href="chart.html">
