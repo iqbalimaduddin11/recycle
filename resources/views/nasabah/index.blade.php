@@ -49,34 +49,3 @@
     </div>
 </div>
 @endsection
-
-
-{{-- <table class="table">
-    <thead class="table-dark">
-        <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Avatar</th>
-            <th>Email</th>
-            <th>Nomer</th>
-            <th>Alamat</th>
-            <th class="center">Action</th>
-        </tr>
-    </thead>
-        @foreach ($nasabah as $key => $nasabah)
-    <tbody>
-        <tr>
-            <td>{{ $key+1 }}</td>
-            <td>{{ $nasabah->name}}</td>
-            <td>{{ $nasabah->avatar}}</td>
-            <td>{{ $nasabah->email}}</td>
-            <td>{{ $nasabah->nomer}}</td>
-            <td>{{ $nasabah->alamat}}</td>
-            <td class="center">
-                <a href="/nasabah/{{ $nasabah->id }}/edit" >
-                    <button><i class="fa fa-lg fa-pencil-square-o mr-1"></i></button>
-                </a>
-            </td>
-    </tbody>
-        @endforeach
-    </table> --}}
