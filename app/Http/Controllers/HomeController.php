@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Nasabah;
 use Illuminate\Http\Request;
 
@@ -37,4 +38,35 @@ class HomeController extends Controller
     {
         return view('nasabah.create');
     }
+    public function storeNasabah(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'alamat' => 'required|string',
+            'rekening' => 'required|integer',
+            'nomer' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        Nasabah::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'alamat' => $request->alamat,
+            'rekening' => $request->rekening,
+            'nomer' => $request->nomer,
+        ]);
+        return redirect('/nasabah')->with('status', 'nasabah has created');
+
+    }
+    public function editNasabah()
+    {
+        return view('nasabah.edit');
+    // }
+    // public function updateNasabah()
+    // {
+
+    // }
 }

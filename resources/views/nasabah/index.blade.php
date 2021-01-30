@@ -25,22 +25,30 @@
                                                     <th class="center">Action</th>
                                                 </tr>
                                             </thead>
-                                            @foreach ($nasabah as $key => $nasabah)
-                                            <tbody>
-                                                <tr>
-                                                    <td>{{ $key+1 }}</td>
-                                                    <td>{{ $nasabah->name}}</td>
-                                                    <td>{{ $nasabah->avatar}}</td>
-                                                    <td>{{ $nasabah->email}}</td>
-                                                    <td>{{ $nasabah->nomer}}</td>
-                                                    <td>{{ $nasabah->alamat}}</td>
-                                                    <td class="center">
-                                                        <a href="/nasabah/{{ $nasabah->id }}/edit" >
-                                                            <button><i class="fa fa-lg fa-pencil-square-o mr-1"></i></button>
-                                                        </a>
-                                                    </td>
-                                            </tbody>
-                                            @endforeach
+                                @foreach ($nasabah as $key => $nasabah)
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $nasabah->name}}</td>
+                                        <td>{{ $nasabah->avatar}}</td>
+                                        <td>{{ $nasabah->email}}</td>
+                                        <td>{{ $nasabah->nomer}}</td>
+                                        <td>{{ $nasabah->alamat}}</td>
+                                        <td class="center">
+                                            <a href="/nasabah/{{ $nasabah->id }}/edit" >
+                                                <button><i class="fa fa-lg fa-pencil-square-o mr-1"></i></button>
+                                            </a>
+                                            <form action="/nasabah/{{ $nasabah->id }}" style="display: inline-block;"
+                                                method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" onclick="return confirm('Anda Yakin ???');">
+                                                    <i class="fa fa-lg fa-trash ml-1"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                </tbody>
+                                @endforeach
                             </table>
                         </div>
                 </div>
